@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * Configuration of Teacher Module
+ * Import other modules component, entity and JpaRepository
  *
  * @author Alamin Hossain
  */

@@ -4,6 +4,7 @@ import com.example.Child2.entity.Child2Entity;
 import com.example.studentmodule.controller.StudentController;
 import com.example.studentmodule.model.Student;
 import com.example.studentmodule.service.StudentService;
+import com.example.teachermodule.DTO.TeacherDTO;
 import com.example.teachermodule.model.Teacher;
 import com.example.teachermodule.service.TeacherService;
 import lombok.RequiredArgsConstructor;
@@ -41,7 +42,7 @@ public class TeacherController {
      * @return String
      */
     @PostMapping("/create")
-    public String createTeacher(@RequestBody Teacher teacher) {
+    public Teacher createTeacher(@RequestBody Teacher teacher) {
 
         return teacherService.createTeacher(teacher);
     }
@@ -53,7 +54,7 @@ public class TeacherController {
      * @return Teacher
      */
     @GetMapping("/{teacherId}")
-    public Optional<Teacher> getUser(@PathVariable("teacherId") Integer id) {
+    public TeacherDTO getUser(@PathVariable("teacherId") Integer id) {
         return teacherService.getTeacherBYId(id);
     }
 

@@ -3,6 +3,7 @@ package com.example.teachermodule.service;
 import com.example.Child2.entity.Child2Entity;
 import com.example.studentmodule.model.Student;
 import com.example.studentmodule.service.StudentService;
+import com.example.teachermodule.DTO.TeacherDTO;
 import com.example.teachermodule.model.Teacher;
 import com.example.teachermodule.repository.ChildRepository;
 import com.example.teachermodule.repository.TeacherRepository;
@@ -28,9 +29,8 @@ public class TeacherService {
      * @param teacher Teacher
      * @return String
      */
-    public String createTeacher(Teacher teacher) {
-        teacherRepository.save(teacher);
-        return "Teacher Created Successfully";
+    public Teacher createTeacher(Teacher teacher) {
+        return teacherRepository.save(teacher);
     }
 
     /**
@@ -39,8 +39,9 @@ public class TeacherService {
      * @param id teacher id
      * @return Teacher
      */
-    public Optional<Teacher> getTeacherBYId(Integer id) {
-        return teacherRepository.findById(id);
+    public TeacherDTO getTeacherBYId(Integer id) {
+        Teacher teacher = teacherRepository.findById(id).orElseThrow();
+        return new TeacherDTO(teacher.getId(), teacher.getName(), teacher.getAddress(), teacher.getDesignation(), teacher.getSubject());
     }
 
     /**
